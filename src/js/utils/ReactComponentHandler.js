@@ -28,22 +28,15 @@ lm.utils.copy(lm.utils.ReactComponentHandler.prototype, {
    * @returns {void}
    */
   _render: function () {
-    const container = this._container.getElement()[0]; // Get the DOM element for the container
+    const container = this._container.getElement()[0];
 
-    // Check if the root has already been created for this container to avoid recreating it
     if (!this._root) {
-      // Since `ReactDOM` is globally available, we access `createRoot` from `ReactDOM`
-      // This assumes `ReactDOM` has been properly included through your imports-loader setup
       this._root = ReactDOM.createRoot(container);
     }
 
-    this._reactComponent = this._getReactComponent(); // Assuming this returns your React component
+    this._reactComponent = this._getReactComponent();
 
-    // Use the root to render your React component
     this._root.render(this._reactComponent);
-
-    // Adjustments for component lifecycle and state management go here
-    // Note: Direct manipulation like `componentWillUpdate` and `setState` may need reevaluation in React 18
   },
   /**
    * Removes the component from the DOM and thus invokes React's unmount lifecycle

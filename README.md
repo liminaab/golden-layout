@@ -1,24 +1,27 @@
-# [Golden Layout](https://golden-layout.com/)  [![NPM version](https://badge.fury.io/js/golden-layout.svg)](http://badge.fury.io/js/golden-layout) [![Build Status](https://travis-ci.org/deepstreamIO/golden-layout.svg?branch=master)](https://travis-ci.org/deepstreamIO/golden-layout)
+# Golden layout - Limina fork
 
-![Screenshot](https://cloud.githubusercontent.com/assets/512416/4584449/e6c154a0-4ffa-11e4-81a8-a7e5f8689dc5.PNG)
+This fork was created to support React 18's new rendering API
 
-# [https://golden-layout.com/](https://golden-layout.com/)
+## Prerequisites
 
-## Installation
+- Node 10
 
-Add `golden-layout` to your bower.json, or [download](https://golden-layout.com/download/) the source.
+```bash
+nvm install 10
+nvm use 10
+```
 
-## Features
+## Test
 
-* Native popup windows
-* Completely themeable
-* Comprehensive API
-* Powerful persistence
-* Works in IE8+, Firefox, Chrome
-* Reponsive design
+```bash
+npm install
+npm test
+```
 
+## Build
 
-## [Examples](https://golden-layout.com/examples/)
-
-## License
-MIT
+```bash
+npm install
+npm install --global gulp-cli
+gulp build
+```
