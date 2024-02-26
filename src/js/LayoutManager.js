@@ -119,8 +119,6 @@ lm.utils.copy(lm.LayoutManager.prototype, {
       throw new Error("Component " + name + " is already registered");
     }
 
-    console.log("register component", name, constructor);
-
     this._components[name] = constructor;
   },
 
@@ -204,10 +202,13 @@ lm.utils.copy(lm.LayoutManager.prototype, {
    * @returns {Function}
    */
   getComponent: function (name) {
-    console.log("get component", name, this._components);
     if (this._components[name] === undefined) {
       throw new lm.errors.ConfigurationError(
-        'Unknown component "' + name + '"'
+        'Unknown component "' +
+          name +
+          '" / "' +
+          JSON.stringify(this._components) +
+          '"'
       );
     }
 
