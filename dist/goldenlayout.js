@@ -3047,16 +3047,6 @@ lm.utils.copy( lm.controls.TransitionIndicator.prototype, {
 		};
 	}
 } );
-lm.errors.ConfigurationError = function( message, node ) {
-	Error.call( this );
-
-	this.name = 'Configuration Error';
-	this.message = message;
-	this.node = node;
-};
-
-lm.errors.ConfigurationError.prototype = new Error();
-
 /**
  * This is the baseclass that all content items inherit from.
  * Most methods provide a subset of what the sub-classes do.
@@ -5245,6 +5235,7 @@ lm.utils.EventHub.prototype.destroy = function() {
  */
 lm.utils.ReactComponentHandler = function (container, state) {
   this._reactComponent = null;
+  this._root = null;
   this._originalComponentWillUpdate = null;
   this._container = container;
   this._initialState = state;
@@ -5281,7 +5272,7 @@ lm.utils.copy(lm.utils.ReactComponentHandler.prototype, {
    * @returns {void}
    */
   _destroy: function () {
-    ReactDOM.unmountComponentAtNode(this._container.getElement()[0]);
+    this._root.unmount();
     this._container.off("open", this._render, this);
     this._container.off("destroy", this._destroy, this);
   },
@@ -5347,4 +5338,14 @@ lm.utils.copy(lm.utils.ReactComponentHandler.prototype, {
     return React.createElement(this._reactClass, props);
   },
 });
+
+lm.errors.ConfigurationError = function( message, node ) {
+	Error.call( this );
+
+	this.name = 'Configuration Error';
+	this.message = message;
+	this.node = node;
+};
+
+lm.errors.ConfigurationError.prototype = new Error();
 })(window.$);
